@@ -39,7 +39,7 @@ function [SimInput] = Offpath_Model(CurrentParameters,SimInput)
            %pK_23 = CurrentParameters(4);
             
          k(2,5) = k25_base *10^-pK_25;
-        k(5,2) = (k25_base * (10^-pK_25)) * CurrentParameters(4);
+        k(5,2) = CurrentParameters(4);
         
         k(1,2) = k12_base * HConc; 
         k(2,1)= k12_base * 10^-pK_12;
@@ -47,13 +47,13 @@ function [SimInput] = Offpath_Model(CurrentParameters,SimInput)
         k(2,3) = k23_base * HConc;
         k(3,2) = 10^-9;
         
-        k(3,4) = .005;
+        k(3,4) = 7.5e-3;
         
     % Set up rate constant matrix for equilibration run (pH 7.4).
         k_Eq = k;
             pH_Eq = 7.4;
             
-        k_Eq(2,5) = 0;
+        %k_Eq(2,5) = 0;
         %k_Eq(5,2) = 0;
         
         k_Eq(1,2) = k12_base * 10^-pH_Eq;

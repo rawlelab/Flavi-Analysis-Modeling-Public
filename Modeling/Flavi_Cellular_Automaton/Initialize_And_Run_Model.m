@@ -15,6 +15,18 @@ function [SimOutput] = Initialize_And_Run_Model(Options,CurrentParameters,...
       EStates(:,1) = SimInput.StartingState;
   else
       EStates = ones(NumberVirions,NumberMonomers)*SimInput.StartingState;
+
+      % If we are randomly inactivating some E proteins from the getgo,
+      % then set that up.
+      if strcmp(Options.RandomlyInactivateStartingEMonomers,'y')
+            if strcmp(Options.FractionEMonomersInactivated,'Scan')
+                FractToInactivate = CurrentParameters(5);
+            else
+                FractToInactivate = Options.FractionEMonomersInactivated;
+            end
+
+          [EStates] = Randomly_Inactivate_Starting_Monomers(EStates,NumberVirions,NumberMonomers,FractToInactivate);
+      end
   end
   
     SimInput.EStateData.StateTransitionCounts = zeros(SimInput.NumberStates,SimInput.NumberStates);

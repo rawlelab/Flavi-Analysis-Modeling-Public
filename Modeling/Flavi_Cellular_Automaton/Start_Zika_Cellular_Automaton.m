@@ -1,5 +1,6 @@
 function [] = Start_Zika_Cellular_Automaton(ModelToUse,CurrentInstance,NumberInstances,SavePath)
 %Start_Zika_Cellular_Automaton('OffPath_CK_Mimic',CurrentInstance,1,[])
+%Start_Zika_Cellular_Automaton('OffPath',1,1,SavePath)
 %Start_Zika_Cellular_Automaton('OffPath',1,3,[])
 %Start_Zika_Cellular_Automaton('OffPath',2,3,[])
 %Start_Zika_Cellular_Automaton('OffPath',3,3,[])
